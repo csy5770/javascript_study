@@ -14,13 +14,34 @@
     confirm(); yes / no 
     prompt(); 데이터 입력을 받아들임.
     */
-   k=confirm("종료?");
-   if(k==true) {
-       alert("종료!!");
+//    k=confirm("종료?");
+//    if(k==true) {
+//        alert("종료!!");
+//     }
+//     else {
+//         alert("이전으로!")
+//     }
+//     a=prompt("이름은?")
+//     if(a=="") {
+//         alert("뭐냐고")
+//     }
+//     else {
+//         alert('네 이름:'+a)
+//     }
+//모바일 번호 입력받고 주소도 입력받음.
+//클라이언트 영역에 document.write()로 출력
+mobile=prompt("모바일번호?");
+    if(mobile===""){
+        alert("모바일 제대로 입력해");
     }
-    else {
-        alert("이전으로!")
+address=prompt("주소?");
+    if(address===""){
+        alert("주소 제대로 입력해");
     }
+if(mobile!="" && address!=""){
+    document.write("모바일번호는.."+mobile + "<br/>");
+    document.write("주소는..."+address);
+}
 </script>
 
 <body>
