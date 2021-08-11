@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>숙박 예약</title>
+    <title>객실 관리</title>
 </head>
 <body>
-<form name="reservation">
 	<div class="area1" style=float:left;>
+        <input type="button" name='toAdmin' id='toAdmin' value='객실관리'>
+        <input type="button" name='toReserve' id='toReserve' value='예약관리'>
         <table style="border: 1px solid black;">
             <tr>
                 <th>숙박기간</th>
@@ -33,10 +34,6 @@
 		</table>
     	<table style="border: 1px solid black;">
         	<caption>예약가능</caption>
-            <colgroup>
-            	<col width="50%">
-                <col width="50%">
-            </colgroup>
             <tr>
             	<th>방 선택</th>
                 <td>
@@ -55,8 +52,6 @@
 		</table>
 	</div>
     <!--예약 끝-->
-    
-</form>
     <div class="area2" style=float:left;>
         객실이름 <input type="text" name='rn' id='rn' value=''><br>
         숙박기간 <input type="date" name='sdate1' id='sdate1' value=''>~<input type="date" name='edate1' id='edate1' value=''><br>
