@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="시작" name=start id=start>
+</body>
+<script src='https://code.jquery.com/jquery-3.5.0.js'></script>
+<script>
+let gn;
+let timer;
+$(document)
+.on('click','#start',function(){
+    alert("시작")
+    gn=5;
+    timer=setInterval(function(){
+        $('#start').val(gn+"초 남음");
+        gn-=1;
+        if(gn<-1) {
+            clearInterval(timer);
+            $('#start').val('시작');
+            return;
+        }
+    },1000);
+})
+</script>
+</html>

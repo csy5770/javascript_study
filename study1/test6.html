@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.style1 {
+    background-color: blue;
+    color: red;
+    font-size: 12px;
+}
+.style2 {
+    background-color: yellow;
+    color: blue;
+    font-size: 24px;
+}
+</style>
+<body>
+<!--
+blur : focus 가 떠났을 때
+click : 마우스 왼 클릭 했을 때
+dlbclic : 왼 더블클릭
+change: html tag안의 값이 변경됐을 때
+focus : 마우스 왼쪽버튼이 눌려서 focus가 들어왔을 때.
+-->
+점수: <input type="text" id="point"><br>
+<input type="button" id=btnPoint value='Stop' onclick="doStop()"><br>
+<input type="button" id=btnCalc value='Show' onclick='getResult()'><br>
+</body>
+<script src='https://code.jquery.com/jquery-3.5.0.js'></script>
+<script>
+// function doStop() {
+//     console.log("doStop");
+// }
+// $(document)
+// .on('click','#btnCalc',function(){
+//     console.log('doStop');
+// })
+// .on('click,#btnPoint',function(){
+//     console.log('btnPoint 클릭');
+// })
+$(document)
+.ready(function(){
+    $('#point').val(50);
+    $('#btnCalc').hide();//fadeOut();
+})
+.on('click','#btnPoint',function(){
+    $('#point').val(100);
+    $(this).hide();
+    //$('#btnPoint').hide();//fadeOut();
+    //$('#btnCalc').show();//fadeIn();
+    $('#btnCalc').show();
+    $('#point').addClass('style1');
+})
+.on('click','#btnCalc',function(){
+    $('#point').val('');
+    $(this).hide();
+    $('#btnPoint').show();
+    $('#point').addClass('style2');
+})
+</script>
+</html>
