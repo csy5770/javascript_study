@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" name='start' value="시작" onclick="doStart()"><br>
+</body>
+<script>
+let gn;
+let timer;
+function doStart() {
+    alert("타이머 시작.");
+    gn=5;
+    timer=setInterval(show,1000);
+}
+function show() {
+    document.getElementsByName('start')[0].value=gn+"초 남았습니다.";
+    gn--;
+    if(gn<0) {
+        stop();
+    }
+}
+function stop() {
+    clearInterval(timer);
+    document.getElementsByName('start')[0].value='시작';
+    return;
+}
+</script>
+</html>
