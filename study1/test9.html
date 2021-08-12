@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    
     <form id=testForm>
+        <div id=dvShow style='background-color:blue;width: 300px; height: 200px; float: right; color: yellow;' ></div>
     모바일번호:<input type=text name=mobile id=mobile> <br>
     이름(실명):<input type=text name=name id=name><br>
     성별: <input type=radio name=gender id=male>남성&nbsp;
@@ -40,6 +42,7 @@
     <input type=button name=btnShow id=btnShow value="보기"> &nbsp;
     <!-- <input type=button name=btnClear id=btnClear value="Clear"> -->
     <button type="reset">Clear</button>
+    
 </form>
 </body>
 <script src='https://code.jquery.com/jquery-3.5.0.js'></script>
@@ -121,8 +124,8 @@ $(document)
         alert('비밀번호가 일치하지 않음');
         return false;
     }
-    str="모바일: "+str1+'\n'+"이름: "+str2+'\n'+"성별: "+str3+'\n'+"생일: "+str4+'\n'+"거주지역: "+str5+'\n'+"관심분야: "+str6+'\n'+"취미: "+str7;
-    alert(str);
+    str="모바일: "+str1+'<br>'+"이름: "+str2+'<br>'+"성별: "+str3+'<br>'+"생일: "+str4+'<br>'+"거주지역: "+str5+'<br>'+"관심분야: "+str6+'<br>'+"취미: "+str7;
+    $('#dvShow').html(str);
     return false;
 })
 // .on('click','#btnClear',function(){
