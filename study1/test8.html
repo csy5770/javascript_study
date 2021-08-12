@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    text:<input type=text id=txtName><br>
+    hidden:<input type=hidden id=txtHidden value="hidden"><br>
+    radio:<input type=radio name=gender id=male>남성&nbsp;;
+    <input type=radio name=gender id=female>여성<br>
+    number:<input type=number id="txtNum"><br>
+    checkbox:<input type=checkbox name=hobby id=movie>영화보기
+    <input type=checkbox name=hobby id=riding>모터사이클
+    <input type=checkbox name=hobby id=climbing>등산
+    textarea:<textarea id=txtAddress rows=3 cols=60></textarea><br>
+    Select: <select id=selNation size=5>
+        <option value=KR>대한민국</option>
+        <option value=US>USA</option>
+        <option value=FR>France</option>
+        <option value=UK>England</option>
+    </select><br>
+    <button id=btnShow>보기</button> &nbsp;
+    <button id=btnWrite>쓰기</button>
+    <div id=dvShow style='background-color:yellow;width: 300px; height: 200px;' ></div>
+</body>
+<script src='https://code.jquery.com/jquery-3.5.0.js'></script>
+<script>
+$(document)
+.on('click','#btnShow',function(){
+    str1=$('#txtName').val();
+    str2=$('#txtHidden').val();
+    if($('#male').is(':checked')){
+        str3='male';
+    } else if($('#female').is(':checked')) {
+        str3='female';
+    } else {
+        //str3='';
+        alert('성별을 지정하세요');
+        return false;
+    }
+    str4=$('#txtNum').val();
+    str5='';
+    if($('#movie').is(':checked')) {
+        str5='영화보기';
+    }
+    if($('#riding').is(':checked')){
+        str5+=' 모터사이클';
+    }
+    if($('#climbing').is(':checked')){
+        str5+=' 등산';
+    }
+    if(str5=='') {
+        alert('취미 최소 1개 선택해야함.')
+        return false;
+    }
+    str6=$('#txtAddress').val();
+    str7=$('#selNation').val();
+    str=str1+'<br>'+str2+'<br>'+str3+'<br>'+str4+'<br>'+str5+'<br>'+str6+'<br>'+str7;
+    $('#dvShow').html(str);
+    return false; //prevent control from bubbling
+})
+.on('click','#btnWrite',function(){
+    $('#txtName').val('johnson');
+    $('#txtHidden').val('숨김');
+    $('#female').attr('checked',true);
+    $('#txtNum').val(50);
+    $('#movie').attr('checked',true);
+    $('#climbing').attr('checked',true);
+    $('#txtAddress').val('휴먼교육');
+    $('#selNation').val('US');
+})
+.on('blur','#txtName',function(){
+    alert($(this).val());
+    return false;
+})
+</script>
+</html>
