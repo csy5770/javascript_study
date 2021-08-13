@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src='https://code.jquery.com/jquery-3.5.0.js'></script>
+<style>
+table {border-collapse: collapse;}
+th {
+    border:1px solid white;
+    background-color: black;
+    color: yellow;
+}
+td {border:1px solid black;}
+</style>
+<body>
+<input type="button" id=btnAdd value='추가'>
+<table id=tbl>
+<tr><th>이름</th><th>모바일</th><th>수학점수</th></tr>
+</table>
+<script>
+$(document)
+.on('click','#btnAdd',function(){
+    let name=prompt('이름을 입력하세요');
+    let mobile=prompt('모바일을 입력하세요');
+    let result=prompt('점수를 입력하세요','0');
+    $('#tbl').append('<tr><td>'+name+'</td><td>'+mobile+'</td><td>'+result+'</td></tr>');
+    return false;
+})
+</script>
+</body>
+</html>

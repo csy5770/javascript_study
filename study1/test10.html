@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    td{
+        width: 80px;
+        height: 50px;
+        text-align: center;
+    }
+</style>
+<body>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <input type="button" id="btnAdd" value="채우기">
+    <input type="button" id="btnSnake" value="스네이크">
+    <table border=1 id="tbl">
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+<script>
+// $('#tbl tr:eq(0) td:eq(1)').text(4);
+// $('#tbl tr').length
+// $('#tbl tr:eq(0) td').length
+$(document)
+.on('click', '#btnAdd',function(){
+    let n=1;
+    for(let i=0; i<$('#tbl tr').length; i++){
+        for(let j=0; j<$('#tbl tr:eq(0) td').length; j++){
+            $('#tbl tr:eq('+i+') td:eq('+j+')').text(n);
+            n++;
+        }
+    }
+})
+.on('click','#btnSnake',function(){
+    let n = 1;
+    for(let i=0; i<$('#tbl tr').length; i++) {
+        if(i%2===0) {
+            for(let j=0; j<$('#tbl tr:eq(0) td').length; j++) {
+                $('#tbl tr:eq('+i+') td:eq('+j+')').text(n);
+                n++;
+            }
+        }
+        else {
+            for(let j=$('#tbl tr:eq(0) td').length-1; j>=0; j--) {
+                $('#tbl tr:eq('+i+') td:eq('+j+')').text(n);
+                n++;
+            }
+        }
+    }
+})
+</script>
+</body>
+</html>
