@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style>
+td {
+    width: 80px;
+    height: 50px;
+}
+.redColor {
+    background-color: red;
+}
+</style>
+<body>
+    <table border=1>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table><br><br>
+    <input type="text" id=txtNum>
+</body>
+<script>
+let ar=["Hello","World","USA","was","defeated","in","Afghanistan"];
+let student={name:'csy',age:27,gender:'male',mobile:'12345678'};
+let bcolor;
+let tablenum=1;
+$(document)
+.ready(function(){
+    $('table tr').even().css('background-color','cyan');
+})
+// .on('mouseenter','table tr',function(){
+//     bcolor=$(this).css('background-color');
+//     console.log(bcolor);
+//     $(this).css('background-color','brown');
+//     return false;
+// })
+.on('mouseleave','table tr',function(){
+    $(this).css('background-color',bcolor);
+    return false;
+})
+.on('click','table tr td',function(){//td 숫자 늘리기
+    if($(this).text()===""){
+        $(this).text(tablenum++);
+        $('#txtNum').trigger('click');
+    }
+    return false;
+})
+.on('click','#txtNum',function(){
+    $(this).toggleClass('redColor');
+    $(this).val(tablenum);
+})
+    // for(let i=0;i<ar.length;i++) {
+    //     document.write(ar[i]+'<br>')
+    // }
+    // for(value of ar) {
+    //     document.write(value+"<br>");
+    // }
+    // ar.forEach(function(value,index){
+    //     document.write(index+'='+value+'<br>');
+    // })
+    // ar.forEach(function(value) {
+    //     document.write(value+'<br>')
+    // })
+    // $.each(student,function(index,value){
+    //     document.write(index+'='+value+'<br>');
+    // let k=1;
+    // $('#tbl tr').each(function(){
+    //     $(this).text(k++);
+    // })
+
+</script>
+
+</html>
