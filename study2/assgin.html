@@ -77,9 +77,9 @@ $(document)
     $('#tbl_order').append('<tr><td>'+$('#in_menu').val()+' '+$('#in_ea').val()+'잔 '+$('#in_total').val()+'원'+'</td></tr>')
 })
 .on('click','#btn_delete',function(){
-    if(confirm('주문을 목록에서 삭제하시겠습니까?')){
-        $('#tbl_order tr:last').remove();
-    }
+    let delNum=prompt('삭제하실 주문 번호는?')-1;
+    $('#tbl_order tr:eq('+delNum+')').remove();
+    
 })
 .on('click','#btn_order',function(){
     let pNumber=prompt('모바일 번호를 입력하세요');
