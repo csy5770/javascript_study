@@ -78,7 +78,13 @@ $(document)
 })
 .on('click','#btn_delete',function(){
     let delNum=prompt('삭제하실 주문 번호는?')-1;
-    $('#tbl_order tr:eq('+delNum+')').remove();
+    if(delNum===-1) {
+        alert('삭제할 번호를 입력하세요');
+        return false;
+    } else {
+        $('#tbl_order tr:eq('+delNum+')').remove();
+    }
+    
     
 })
 .on('click','#btn_order',function(){
