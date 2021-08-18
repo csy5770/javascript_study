@@ -74,14 +74,25 @@ $(document)
     }
 })
 .on('click','#btn_add',function(){
-    $('#tbl_order').append('<tr><td>'+$('#in_menu').val()+' '+$('#in_ea').val()+'잔 '+$('#in_total').val()+'원'+'</td></tr>')
+    if($('#in_menu').val()!='' && $('#in_ea').val()!='' && $('#in_total').val()!='') {
+        $('#tbl_order').append('<tr><td>'+$('#in_menu').val()+' '+$('#in_ea').val()+'잔 '+$('#in_total').val()+'원'+'</td></tr>')
+    }
+    else {
+        alert('메뉴명, 수량, 총액이 모두 채워져야 합니다.');
+        return false;
+    }
 })
 .on('click','#btn_delete',function(){
     let delNum=prompt('삭제하실 주문 번호는?')-1;
     if(delNum===-1) {
         alert('삭제할 번호를 입력하세요');
         return false;
-    } else {
+    }
+    else if(delNum>=parseInt($('#tbl_order tr').length)) {
+        alert('삭제 번호를 올바르게 입력하세요')
+        return false;
+    }
+    else {
         $('#tbl_order tr:eq('+delNum+')').remove();
     }
     
@@ -89,11 +100,16 @@ $(document)
 })
 .on('click','#btn_order',function(){
     let pNumber=prompt('모바일 번호를 입력하세요');
-    for(let i=0; i<$('#tbl_order tr').length; i++) {
+    if(pNumber==='') {
+        alert('모바일 번호를 입력하세요.');
+        return false;
+    }
+    else {
+        for(let i=0; i<$('#tbl_order tr').length; i++) {
         let order_list = $('#tbl_order tr:eq('+i+')').text();
         $('#tbl_sell').append('<tr><td>'+pNumber+' '+order_list+'</td></tr>');
+        }
     }
-   
 })
 </script>
 </html>
