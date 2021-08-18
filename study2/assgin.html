@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<body>
+    <div class="menu" style="float:left;">
+        &nbsp;메뉴<br>
+        <table id="tbl_menu">
+            <tr><td>
+                <select id="menuselect" name="menuselect" size="5">
+                    <optgroup label="음료">
+                        <option id='opt_americano' value="americano">아메리카노 2500</option>
+                        <option id='opt_espresso' value="espresso">에스프레소 2000</option>
+                        <option id='opt_latte' value="latte">카페라떼 3000</option>
+                        <option id='opt_cappuccino' value="cappuccino">카푸치노 3500</option>
+                    </optgroup>
+                </select>
+            </td></tr>
+            
+        </table><br><br>
+    </div>  
+    <div class="order" style="float:left; margin-left: 50px;">
+        <table id="tbl_order" border="1">
+            <caption>주문현황</caption>
+        </table><br><br>
+        메뉴명:<input type="text" id="in_menu"><br><br>
+        수량:<input type="number" id="in_ea"><br><br>
+        총액:<input type="number" id="in_total"><br><br>
+        <input type="button" id="btn_add" value="추가">&nbsp;
+        <input type="button" id="btn_delete" value="삭제"><br><br>
+        <input type="button" id="btn_order" value="주문">
+    </div>  
+    <div class="sell" style="float:left; margin-left: 50px;">
+        <table id="tbl_sell" border="1">
+            <caption>매출현황</caption>
+        </table><br><br>
+    </div>  
+</body>
+<script>
+let amPrice=2500; //아메가격
+let laPrice=3000;
+let esPrice=2000;
+let cnPrice=3500;
+$(document)
+.on('click','#opt_americano',function(){
+    $('#in_menu').val('아메리카노')
+})
+.on('click','#opt_espresso',function(){
+    $('#in_menu').val('에스프레소')
+})
+.on('click','#opt_latte',function(){
+    $('#in_menu').val('카페라떼')
+})
+.on('click','#opt_cappuccino',function(){
+    $('#in_menu').val('카푸치노')
+})//메뉴 클릭시 메뉴명에 추가 끝.
+.on('blur','#in_ea',function(){
+    if($('#in_menu').val()==='아메리카노') {
+        $('#in_total').val(parseInt(amPrice)*parseInt($('#in_ea').val()));
+    }
+    if($('#in_menu').val()==='에스프레소') {
+        $('#in_total').val(parseInt(esPrice)*parseInt($('#in_ea').val()));
+    }
+    if($('#in_menu').val()==='카페라떼') {
+        $('#in_total').val(parseInt(laPrice)*parseInt($('#in_ea').val()));
+    }
+    if($('#in_menu').val()==='카푸치노') {
+        $('#in_total').val(parseInt(cnPrice)*parseInt($('#in_ea').val()));
+    }
+})
+.on('click','#btn_add',function(){
+    $('#tbl_order').append('<tr><td>'+$('#in_menu').val()+' '+$('#in_ea').val()+'잔 '+$('#in_total').val()+'원'+'</td></tr>')
+})
+.on('click','#btn_delete',function(){
+    if(confirm('주문을 목록에서 삭제하시겠습니까?')){
+        $('#tbl_order tr:last').remove();
+    }
+})
+.on('click','#btn_order',function(){
+    let pNumber=prompt('모바일 번호를 입력하세요');
+    for(let i=0; i<$('#tbl_order tr').length; i++) {
+        let order_list = $('#tbl_order tr:eq('+i+')').text();
+        $('#tbl_sell').append('<tr><td>'+pNumber+' '+order_list+'</td></tr>');
+    }
+   
+})
+</script>
+</html>
