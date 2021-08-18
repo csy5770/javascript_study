@@ -42,7 +42,7 @@
     </div>  
 </body>
 <script>
-let amPrice=2500; //아메가격
+let amPrice=2500;
 let laPrice=3000;
 let esPrice=2000;
 let cnPrice=3500;
@@ -99,6 +99,10 @@ $(document)
     
 })
 .on('click','#btn_order',function(){
+    if($('#tbl_order tr td').text()==='') {
+        alert('먼저 주문을 완료해주세요.');
+        return false;
+    }
     let pNumber=prompt('모바일 번호를 입력하세요');
     if(pNumber==='') {
         alert('모바일 번호를 입력하세요.');
